@@ -252,9 +252,10 @@ CREATE TABLE Drive
 CREATE TABLE Play
 (
   PlayID uniqueidentifier NOT NULL
-	DEFAULT newid(),
+  DEFAULT newid(),
   PlayNumber INT NOT NULL,
   PeriodNumber INT NOT NULL,
+  GameCode bigint not null,
   Clock INT,
   OffensePoints INT NOT NULL,
   DefensePoints INT NOT NULL,
@@ -268,7 +269,8 @@ CREATE TABLE Play
   DefenseTeamCode INT NOT NULL,
   PRIMARY KEY (PlayID),
   FOREIGN KEY (OffenseTeamCode) REFERENCES Team(TeamCode),
-  FOREIGN KEY (DefenseTeamCode) REFERENCES Team(TeamCode)
+  FOREIGN KEY (DefenseTeamCode) REFERENCES Team(TeamCode),
+  FOREIGN KEY (GameCode) REFERENCES Game(GameCode)
 );
 
 CREATE TABLE Punt
