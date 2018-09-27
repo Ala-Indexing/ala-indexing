@@ -27,6 +27,7 @@ CREATE TABLE Team
   FOREIGN KEY (ConferenceCode) REFERENCES Conference(ConferenceCode)
 );
 
+/*
 CREATE TABLE Season
 (
   SeasonId INT NOT NULL,
@@ -34,6 +35,7 @@ CREATE TABLE Season
   PRIMARY KEY (SeasonId)
 );
 insert into Season VALUES(2005,2005);
+*/
 
 CREATE TABLE Game
 (
@@ -42,13 +44,13 @@ CREATE TABLE Game
   Site VARCHAR(30) NOT NULL,
   StadiumCode INT NOT NULL,
   HomeTeamCode INT NOT NULL,
-  VisitingTeamCode INT NOT NULL,
-  SeasonId INT NOT NULL,
+  VisitTeamCode INT NOT NULL,
+  --SeasonId INT NOT NULL,
   PRIMARY KEY (GameCode),
   FOREIGN KEY (StadiumCode) REFERENCES Stadium(StadiumCode),
   FOREIGN KEY (HomeTeamCode) REFERENCES Team(TeamCode),
-  FOREIGN KEY (VisitingTeamCode) REFERENCES Team(TeamCode),
-  FOREIGN KEY (SeasonId) REFERENCES Season(SeasonId)
+  FOREIGN KEY (VisitTeamCode) REFERENCES Team(TeamCode),
+  --FOREIGN KEY (SeasonId) REFERENCES Season(SeasonId)
 );
 
 CREATE TABLE GameStatistics
