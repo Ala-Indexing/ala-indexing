@@ -133,7 +133,7 @@ CREATE TABLE PlayerGameStatistics
   FumbleLost INT NOT NULL,
   TackleSolo INT NOT NULL,
   TackleAssist INT NOT NULL,
-  TackleForLoss INT NOT NULL,
+  TackleForLoss FLOAT NOT NULL,
   TackleForLossYard INT NOT NULL,
   Sack FLOAT NOT NULL,
   SackYard INT NOT NULL,
