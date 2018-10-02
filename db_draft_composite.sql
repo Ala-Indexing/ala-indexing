@@ -117,7 +117,7 @@ CREATE TABLE PlayerGameStatistics
   FieldGoalAtt INT NOT NULL,
   FieldGoalMade INT NOT NULL,
   OffXPKickAtt INT NOT NULL,
-  OffXPKickAttMade INT NOT NULL,
+  OffXPKickMade INT NOT NULL,
   Off2XPAtt INT NOT NULL,
   Off2XPMade INT NOT NULL,
   Def2XPAtt INT NOT NULL,
