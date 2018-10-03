@@ -164,7 +164,7 @@ CREATE TABLE TeamGameStatistics
   PassInt INT NOT NULL,
   PassConv INT NOT NULL,
   KickoffRet INT NOT NULL,
-  KickoffRetYD INT NOT NULL,
+  KickoffRetYard INT NOT NULL,
   KickoffRetTD INT NOT NULL,
   PuntRet INT NOT NULL,
   PuntRetYard INT NOT NULL,
