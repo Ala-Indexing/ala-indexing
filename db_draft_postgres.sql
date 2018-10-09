@@ -250,6 +250,7 @@ CREATE TABLE Drive
 
 CREATE TABLE Play
 (
+  PlayID uuid DEFAULT uuid_generate_v4(),
   PlayNumber INT NOT NULL,
   PeriodNumber INT NOT NULL,
   GameCode bigint NOT NULL,
@@ -264,7 +265,7 @@ CREATE TABLE Play
   DriveNumber INT,
   OffenseTeamCode INT NOT NULL,
   DefenseTeamCode INT NOT NULL,
-  PRIMARY KEY (GameCode, PlayNumber),
+  PRIMARY KEY (PlayID),
   FOREIGN KEY (OffenseTeamCode) REFERENCES Team(TeamCode),
   FOREIGN KEY (DefenseTeamCode) REFERENCES Team(TeamCode),
   FOREIGN KEY (GameCode) REFERENCES Game(GameCode)
@@ -272,6 +273,7 @@ CREATE TABLE Play
 
 CREATE TABLE Punt
 (
+  PuntID uuid DEFAULT uuid_generate_v4(),
   Attempt INT NOT NULL,
   Yards INT NOT NULL,
   Blocked INT NOT NULL,
@@ -283,7 +285,7 @@ CREATE TABLE Punt
   PlayNumber INT NOT NULL,
   PlayerCode INT NOT NULL,
   TeamCode INT NOT NULL,
-  PRIMARY KEY (GameCode, PlayNumber),
+  PRIMARY KEY (PuntID),
   FOREIGN KEY (GameCode) REFERENCES Game(GameCode),
   FOREIGN KEY (PlayerCode) REFERENCES Player(PlayerCode),
   FOREIGN KEY (TeamCode) REFERENCES Team(TeamCode)
@@ -291,6 +293,7 @@ CREATE TABLE Punt
 
 CREATE TABLE PuntReturn
 (
+  PuntReturnID uuid DEFAULT uuid_generate_v4(),
   Attempt INT NOT NULL,
   Yards INT NOT NULL,
   Touchdown INT NOT NULL,
@@ -302,14 +305,15 @@ CREATE TABLE PuntReturn
   PlayNumber INT NOT NULL,
   PlayerCode INT NOT NULL,
   TeamCode INT NOT NULL,
-  PRIMARY KEY (GameCode, PlayNumber),
+  PRIMARY KEY (PuntReturnID),
   FOREIGN KEY (GameCode) REFERENCES Game(GameCode),
   FOREIGN KEY (PlayerCode) REFERENCES Player(PlayerCode),
   FOREIGN KEY (TeamCode) REFERENCES Team(TeamCode)
 );
 
 CREATE TABLE Reception
-(
+( 
+  ReceptionID uuid DEFAULT uuid_generate_v4(),
   Reception INT NOT NULL,
   Yards INT NOT NULL,
   Touchdown INT NOT NULL,
@@ -321,7 +325,7 @@ CREATE TABLE Reception
   PlayNumber INT NOT NULL,
   PlayerCode INT NOT NULL,
   TeamCode INT NOT NULL,
-  PRIMARY KEY (GameCode, PlayNumber),
+  PRIMARY KEY (ReceptionID),
   FOREIGN KEY (GameCode) REFERENCES Game(GameCode),
   FOREIGN KEY (PlayerCode) REFERENCES Player(PlayerCode),
   FOREIGN KEY (TeamCode) REFERENCES Team(TeamCode)
@@ -329,6 +333,7 @@ CREATE TABLE Reception
 
 CREATE TABLE Rush
 (
+  RushID uuid DEFAULT uuid_generate_v4(),
   Attempt INT NOT NULL,
   Yards INT NOT NULL,
   TouchDown INT NOT NULL,
@@ -341,7 +346,7 @@ CREATE TABLE Rush
   PlayNumber INT NOT NULL,
   PlayerCode INT NOT NULL,
   TeamCode INT NOT NULL,
-  PRIMARY KEY (GameCode, PlayNumber),
+  PRIMARY KEY (RushID),
   FOREIGN KEY (GameCode) REFERENCES Game(GameCode),
   FOREIGN KEY (PlayerCode) REFERENCES Player(PlayerCode),
   FOREIGN KEY (TeamCode) REFERENCES Team(TeamCode)
@@ -349,6 +354,7 @@ CREATE TABLE Rush
 
 CREATE TABLE Kickoff
 (
+  KickoffID uuid DEFAULT uuid_generate_v4(),
   PlayerCode INT NOT NULL,
   Attempt INT NOT NULL,
   Yards INT NOT NULL,
@@ -361,13 +367,14 @@ CREATE TABLE Kickoff
   GameCode bigint NOT NULL,
   PlayNumber INT NOT NULL,
   TeamCode INT NOT NULL,
-  PRIMARY KEY (GameCode, PlayNumber),
+  PRIMARY KEY (KickoffID),
   FOREIGN KEY (GameCode) REFERENCES Game(GameCode),
   FOREIGN KEY (TeamCode) REFERENCES Team(TeamCode)
 );
 
 CREATE TABLE KickoffReturn
 (
+  KickoffReturnID uuid DEFAULT uuid_generate_v4(),
   Attempt INT NOT NULL,
   Yards INT NOT NULL,
   Touchdown INT NOT NULL,
@@ -379,7 +386,7 @@ CREATE TABLE KickoffReturn
   PlayNumber INT NOT NULL,
   TeamCode INT NOT NULL,
   PlayerCode INT NOT NULL,
-  PRIMARY KEY (GameCode, PlayNumber),
+  PRIMARY KEY (KickoffReturnID),
   FOREIGN KEY (GameCode) REFERENCES Game(GameCode),
   FOREIGN KEY (TeamCode) REFERENCES Team(TeamCode),
   FOREIGN KEY (PlayerCode) REFERENCES Player(PlayerCode)
@@ -387,6 +394,7 @@ CREATE TABLE KickoffReturn
 
 CREATE TABLE Pass
 (
+  PassID uuid DEFAULT uuid_generate_v4(),
   Attempt INT NOT NULL,
   Completion INT NOT NULL,
   Yards INT NOT NULL,
@@ -399,7 +407,7 @@ CREATE TABLE Pass
   PasserPlayerCode INT NOT NULL,
   ReceiverPlayerCode INT,
   TeamCode INT NOT NULL,
-  PRIMARY KEY (GameCode, PlayNumber),
+  PRIMARY KEY (PassID),
   FOREIGN KEY (GameCode) REFERENCES Game(GameCode),
   FOREIGN KEY (PasserPlayerCode) REFERENCES Player(PlayerCode),
   FOREIGN KEY (ReceiverPlayerCode) REFERENCES Player(PlayerCode),
