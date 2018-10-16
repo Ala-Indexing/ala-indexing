@@ -27,6 +27,7 @@ for name in dfArray:
     df.columns = df.columns.str.replace('-', '')
     df.columns = df.columns.str.replace('/', '')
     df.columns = df.columns.str.replace('1st', 'First')
+    df.columns = df.columns.str.replace(' ', '')
     df.columns = df.columns.str.lower()
     
     #removing dashes from table names
