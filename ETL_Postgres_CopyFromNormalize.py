@@ -47,9 +47,9 @@ for name in dfArray:
         bucket.df.drop('position', axis=1, inplace=True)
         bucket.df.drop('height', axis=1, inplace=True)
         bucket.df.drop('weight', axis=1, inplace=True)
-        bucket.df.drop('hometown', axis=1, inplace=True)
-        bucket.df.drop('homestate', axis=1, inplace=True)
-        bucket.df.drop('homecountry', axis=1, inplace=True)
+        bucket2.df.drop('hometown', axis=1, inplace=True)
+        bucket2.df.drop('homestate', axis=1, inplace=True)
+        bucket2.df.drop('homecountry', axis=1, inplace=True)
         bucket.df.drop('lastschool', axis=1, inplace=True)
         bucket.df.drop('teamcode', axis=1, inplace=True)
         
@@ -70,10 +70,10 @@ for name in dfArray:
         buck.df.to_csv(r'C:\Users\BPennington17\Desktop\cleaned\\' + cleanedName, index=False)
         conn = psycopg2.connect("host=capstonealaindexing2018.postgres.database.azure.com dbname=test user=hstandeffer@capstonealaindexing2018 password=Alaindexing!")
         cur = conn.cursor()
-        fileString = r'C:\Users\BPennington17\Desktop\cleaned\\' + name + '_cleaned.csv'
+        fileString = r'C:\Users\BPennington17\Desktop\cleaned\\' + buck.name + '_cleaned.csv'
         with open(fileString,'r') as f"
             next(f)
-            cur.copy_from(f,name,sep=',')
+            cur.copy_from(f,buck.name,sep=',')
         conn.commit()
     
     #printing out progress and finally converting DataFrame to SQL
