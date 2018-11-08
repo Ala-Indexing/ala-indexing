@@ -7,9 +7,7 @@ CREATE TABLE Game
 	homeAbbr VARCHAR(8) NOT NULL,
 	homeId INT NOT NULL,
 	homeTeam VARCHAR(30) NOT NULL,
-	week VARCHAR(8) NOT NULL,
-	year INT NOT NULL,
-	Primary Key(gameId)
+	PRIMARY KEY (gameId)
 );
 
 CREATE TABLE Drive 
@@ -23,8 +21,10 @@ CREATE TABLE Drive
 	offenseId INT NOT NULL,
 	offenseTeam VARCHAR(30) NOT NULL,
 	quarter INT NOT NULL,
-	PRIMARY KEY (defenseId, driveIndex, offenseId)
-	FOREIGN KEY (gameId) REFERENCES game(gameId)
+	week VARCHAR(8) NOT NULL,
+	year INT NOT NULL,
+	PRIMARY KEY (defenseId, driveIndex, offenseId, week, year),
+	FOREIGN KEY (gameId) REFERENCES game(gameId)	
 );
 
 CREATE TABLE Play
@@ -43,5 +43,7 @@ CREATE TABLE Play
 	type VARCHAR(30) NOT NULL,
 	yardLine INT NOT NULL,
 	yardsGained INT NOT NULL,
-	FOREIGN KEY (defenseId, driveIndex, offenseId) REFERENCES Drive(defenseId, driveIndex, offenseId)
+	week VARCHAR(8) NOT NULL,
+	year INT NOT NULL,
+	FOREIGN KEY (defenseId, driveIndex, offenseId, week, year) REFERENCES Drive(defenseId, driveIndex, offenseId, week, year)
 );
