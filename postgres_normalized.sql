@@ -83,7 +83,7 @@ CREATE TABLE PlayerDetails
   Position VARCHAR(10),
   Height VARCHAR(10),
   Weight VARCHAR(10),
-  LastSchool VARCHAR(30),
+  LastSchool VARCHAR(50),
   FOREIGN KEY (PlayerCode) REFERENCES Player(PlayerCode),
   FOREIGN KEY (TeamCode) REFERENCES Team(TeamCode)
 );
